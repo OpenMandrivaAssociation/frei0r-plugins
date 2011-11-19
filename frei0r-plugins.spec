@@ -2,7 +2,7 @@
 
 %define split 1
 
-#%define snapshot 20110220
+#define snapshot 20110220
 
 Summary:        A minimalistic plugin API for video effects
 Name:           frei0r-plugins
