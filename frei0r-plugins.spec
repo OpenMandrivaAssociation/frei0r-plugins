@@ -9,6 +9,7 @@ URL:		http://www.piksel.org/frei0r
 Source0:	http://www.piksel.no/frei0r/releases/%{name}-%{version}.tar.gz
 Patch0:		frei0r-plugins-no-return-in-nonvoid-function.patch
 Patch1:		frei0r-plugins-sequence-point.patch
+Patch2:		frei0r-1.3-doc-destdir-support.patch
 BuildRequires:	cmake
 BuildRequires:	doxygen
 BuildRequires:	pkgconfig(opencv)
@@ -48,13 +49,16 @@ applications that use frei0r-plugins.
 %setup -q -n %{oname}-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1 -b .destdir~
 
 %build
 %configure
 %make
+make -C doc
 
 %install
 %makeinstall_std
+%makeinstall_std -C doc
 
 %files
 %doc AUTHORS README ChangeLog
