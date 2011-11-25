@@ -62,10 +62,11 @@ applications that use frei0r-plugins.
 
 %files
 %doc AUTHORS README ChangeLog
+%exclude %{_docdir}/%{name}/html
 %dir %{_libdir}/frei0r-1
 %{_libdir}/frei0r-1/*.so
 
 %files devel
-#doc doc/html/*
+%doc %{_docdir}/%{name}/html
 %{_includedir}/frei0r.h
 %{_libdir}/pkgconfig/frei0r.pc
