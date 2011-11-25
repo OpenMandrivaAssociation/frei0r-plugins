@@ -1,33 +1,19 @@
-%define date	%(echo `LC_ALL="C" date +"%a %b %d %Y"`)
-
-%define split 1
-
-#define snapshot 20110220
-
-Summary:        A minimalistic plugin API for video effects
-Name:           frei0r-plugins
-#Version:        1.1.22_git%{snapshot}
-Version:        1.3
-Release:        %mkrel 1
-License:        GPLv2+
-Group:          System/Libraries
+%define	oname	frei0r
+Summary:	A minimalistic plugin API for video effects
+Name:		%{oname}-plugins
+Version:	1.3
+Release:	2
+License:	GPLv2+
+Group:		System/Libraries
 URL:		http://www.piksel.org/frei0r
-Source0:	http://www.piksel.no/frei0r/releases/frei0r-plugins-%{version}.tar.gz
-## git clone --depth=1 git://code.dyne.org/frei0r.git
-#Source0:        frei0r-%{snapshot}.tar.bz2
-Patch0:         %{name}-no-return-in-nonvoid-function.patch
-Patch1:         %{name}-sequence-point.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  gcc-c++
-BuildRequires:  gavl-devel >= 0.2.3
-BuildRequires:  doxygen
-#%if %suse_version >= 1110
-BuildRequires:  opencv-devel >= 1.0.0
-#%endif
-BuildRequires:  pkgconfig >= 0.9.0
-%if !%{split}
-Provides:       %{name}-devel = %{version}
-%endif
+Source0:	http://www.piksel.no/frei0r/releases/%{name}-%{version}.tar.gz
+Patch0:		frei0r-plugins-no-return-in-nonvoid-function.patch
+Patch1:		frei0r-plugins-sequence-point.patch
+BuildRequires:	cmake
+BuildRequires:	doxygen
+BuildRequires:	pkgconfig(opencv)
+Buildrequires:	pkgconfig(gavl)
+%rename		%{oname}
 
 %description
 frei0r - a minimalistic plugin API for video effects.
@@ -49,54 +35,33 @@ are still an evolving field.
 The frei0r API is not meant to be a competing standard to more
 ambitious efforts.
 
-%if %{split}
-%package devel
-Summary:        Development files for frei0r-plugins
-Group:          Development/Other
-Requires:       %{name} = %{version}
-Requires:       gavl-devel
-Requires:       opencv-devel
+%package	devel
+Summary:	Development files for frei0r-plugins
+Group:		Development/Other
+Requires:	%{name} = %{EVRD}
 
-%description devel
+%description	devel
 The fri0r-plugins-devel package contains header files for developing
 applications that use frei0r-plugins.
-%endif #split
 
 %prep
-%setup -q -n frei0r-%{version}
-#%setup -q -n "frei0r-%{snapshot}"
-#%setup -q -n "frei0r"
+%setup -q -n %{oname}-%{version}
 %patch0 -p1
 %patch1 -p1
 
 %build
-[ -e ./configure ] || ./autogen.sh
-%configure \
-    --disable-static
-%__make %{?_smp_flags}
+%configure
+%make
 
 %install
-%makeinstall_std \
-    plugindir=%{_libdir}/frei0r-1
-
-%__rm -f doc/html/Makefile*
-%__rm -rf "%{buildroot}%{_datadir}/doc/%{name}-1.1"
-%__rm -rf "%{buildroot}%{_datadir}/doc/frei0r-plugins"
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+%makeinstall_std
 
 %files
-%defattr(-,root,root,-)
-%doc AUTHORS COPYING README ChangeLog
+%doc AUTHORS README ChangeLog
 %dir %{_libdir}/frei0r-1
 %{_libdir}/frei0r-1/*.so
 
-%if %{split}
 %files devel
-%defattr(-,root,root,-)
-%endif
 #doc doc/html/*
-%{_includedir}/*.h
+%{_includedir}/frei0r.h
 %{_libdir}/pkgconfig/frei0r.pc
-
