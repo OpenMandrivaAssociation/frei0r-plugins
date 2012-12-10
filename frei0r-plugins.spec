@@ -2,7 +2,7 @@
 Summary:	A minimalistic plugin API for video effects
 Name:		%{oname}-plugins
 Version:	1.3
-Release:	4
+Release:	2
 License:	GPLv2+
 Group:		System/Libraries
 URL:		http://www.piksel.org/frei0r
@@ -11,6 +11,7 @@ Patch0:		frei0r-plugins-no-return-in-nonvoid-function.patch
 Patch1:		frei0r-plugins-sequence-point.patch
 Patch2:		frei0r-1.3-doc-destdir-support.patch
 Patch3:		frei0r-1.3-build-docs-by-default.patch
+BuildRequires:  pkgconfig(libpng)
 BuildRequires:	cmake
 BuildRequires:	doxygen
 BuildRequires:	pkgconfig(opencv)
@@ -70,3 +71,7 @@ applications that use frei0r-plugins.
 %doc %{_docdir}/%{name}/html
 %{_includedir}/frei0r.h
 %{_libdir}/pkgconfig/frei0r.pc
+
+
+%changelog
+
