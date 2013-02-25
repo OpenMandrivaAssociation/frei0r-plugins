@@ -2,7 +2,7 @@
 Summary:	A minimalistic plugin API for video effects
 Name:		%{oname}-plugins
 Version:	1.3
-Release:	2
+Release:	5
 License:	GPLv2+
 Group:		System/Libraries
 URL:		http://www.piksel.org/frei0r
@@ -71,7 +71,3 @@ applications that use frei0r-plugins.
 %doc %{_docdir}/%{name}/html
 %{_includedir}/frei0r.h
 %{_libdir}/pkgconfig/frei0r.pc
-
-
-%changelog
-
