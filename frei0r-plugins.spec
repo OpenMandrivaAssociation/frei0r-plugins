@@ -1,21 +1,22 @@
 %define	oname	frei0r
+
 Summary:	A minimalistic plugin API for video effects
 Name:		%{oname}-plugins
 Version:	1.3
 Release:	5
 License:	GPLv2+
 Group:		System/Libraries
-URL:		http://www.piksel.org/frei0r
+Url:		http://www.piksel.org/frei0r
 Source0:	http://www.piksel.no/frei0r/releases/%{name}-%{version}.tar.gz
 Patch0:		frei0r-plugins-no-return-in-nonvoid-function.patch
 Patch1:		frei0r-plugins-sequence-point.patch
 Patch2:		frei0r-1.3-doc-destdir-support.patch
 Patch3:		frei0r-1.3-build-docs-by-default.patch
-BuildRequires:  pkgconfig(libpng)
 BuildRequires:	cmake
 BuildRequires:	doxygen
-BuildRequires:	pkgconfig(opencv)
 Buildrequires:	pkgconfig(gavl)
+BuildRequires:	pkgconfig(libpng)
+BuildRequires:	pkgconfig(opencv)
 %rename		%{oname}
 
 %description
@@ -48,11 +49,8 @@ The fri0r-plugins-devel package contains header files for developing
 applications that use frei0r-plugins.
 
 %prep
-%setup -q -n %{oname}-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1 -b .destdir~
-%patch3 -p1 -b .doc~
+%setup -qn %{oname}-%{version}
+%apply_patches
 
 %build
 %configure
@@ -71,3 +69,4 @@ applications that use frei0r-plugins.
 %doc %{_docdir}/%{name}/html
 %{_includedir}/frei0r.h
 %{_libdir}/pkgconfig/frei0r.pc
+
