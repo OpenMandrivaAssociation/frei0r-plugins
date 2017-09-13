@@ -3,7 +3,7 @@
 Summary:	A minimalistic plugin API for video effects
 Name:		%{oname}-plugins
 Version:	1.6.1
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://www.piksel.org/frei0r
