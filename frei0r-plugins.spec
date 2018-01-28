@@ -7,6 +7,7 @@ Release:	2
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://www.piksel.org/frei0r
+# See also https://github.com/dyne/frei0r
 Source0:	http://www.piksel.no/frei0r/releases/%{name}-%{version}.tar.gz
 Patch1:		frei0r-1.3-build-docs-by-default.patch
 BuildRequires:	autoconf
