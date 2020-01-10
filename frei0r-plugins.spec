@@ -63,7 +63,7 @@ applications that use frei0r-plugins.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 autoreconf -fiv
 
 %build
