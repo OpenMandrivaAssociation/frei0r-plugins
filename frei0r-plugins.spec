@@ -66,7 +66,7 @@ applications that use frei0r-plugins.
 
 %build
 %cmake
-%cmake_build -C build
+%make_build -C build
 
 %install
-%cmake_install -C build
+%make_install -C build
