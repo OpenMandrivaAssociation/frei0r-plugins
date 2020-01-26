@@ -55,7 +55,7 @@ The fri0r-plugins-devel package contains header files for developing
 applications that use frei0r-plugins.
 
 %files devel
-%doc %{_docdir}/%{name}
+#doc #{_docdir}/%{name}
 %{_includedir}/frei0r.h
 %{_libdir}/pkgconfig/frei0r.pc
 
