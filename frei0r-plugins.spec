@@ -2,8 +2,8 @@
 
 Summary:	A minimalistic plugin API for video effects
 Name:		%{oname}-plugins
-Version:	1.6.1
-Release:	4
+Version:	1.7.0
+Release:	1
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://www.piksel.org/frei0r
@@ -55,7 +55,7 @@ The fri0r-plugins-devel package contains header files for developing
 applications that use frei0r-plugins.
 
 %files devel
-%doc %{_docdir}/%{name}
+#doc #{_docdir}/%{name}
 %{_includedir}/frei0r.h
 %{_libdir}/pkgconfig/frei0r.pc
 
@@ -63,12 +63,10 @@ applications that use frei0r-plugins.
 
 %prep
 %setup -q
-%autopatch -p1
-autoreconf -fiv
 
 %build
-%configure
-%make
+%cmake
+%make_build
 
 %install
-%makeinstall_std
+%make_install -C build
