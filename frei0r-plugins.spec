@@ -10,7 +10,8 @@ Url:		http://www.piksel.org/frei0r
 # See also https://github.com/dyne/frei0r
 Source0:	http://www.piksel.no/frei0r/releases/%{name}-%{version}.tar.gz
 Patch1:		frei0r-1.3-build-docs-by-default.patch
-BuildRequires:	autoconf
+# (tpg) add support for opencv4
+Patch2:		https://patch-diff.githubusercontent.com/raw/dyne/frei0r/pull/101.patch
 BuildRequires:	cmake
 BuildRequires:	doxygen
 Buildrequires:	pkgconfig(cairo)
