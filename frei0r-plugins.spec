@@ -3,7 +3,7 @@
 Summary:	A minimalistic plugin API for video effects
 Name:		%{oname}-plugins
 Version:	1.7.0
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://www.piksel.org/frei0r
@@ -16,7 +16,7 @@ BuildRequires:	doxygen
 Buildrequires:	pkgconfig(cairo)
 Buildrequires:	pkgconfig(gavl)
 BuildRequires:	pkgconfig(libpng)
-BuildRequires:	pkgconfig(opencv)
+BuildRequires:	pkgconfig(opencv4)
 %rename		%{oname}
 
 %description
@@ -62,7 +62,7 @@ applications that use frei0r-plugins.
 #----------------------------------------------------------------------------
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake
