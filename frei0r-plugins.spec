@@ -3,10 +3,10 @@
 Summary:	A minimalistic plugin API for video effects
 Name:		%{oname}-plugins
 Version:	1.7.0
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		System/Libraries
-Url:		http://www.piksel.org/frei0r
+Url:		http://frei0r.dyne.org/
 # See also https://github.com/dyne/frei0r
 Source0:	http://www.piksel.no/frei0r/releases/%{name}-%{version}.tar.gz
 Patch1:		frei0r-1.3-build-docs-by-default.patch
