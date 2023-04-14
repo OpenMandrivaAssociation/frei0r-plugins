@@ -2,16 +2,13 @@
 
 Summary:	A minimalistic plugin API for video effects
 Name:		%{oname}-plugins
-Version:	1.7.0
-Release:	6
+Version:	2.2.0
+Release:	1
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://frei0r.dyne.org/
 # See also https://github.com/dyne/frei0r
-Source0:	http://www.piksel.no/frei0r/releases/%{name}-%{version}.tar.gz
-Patch1:		frei0r-1.3-build-docs-by-default.patch
-# (tpg) add support for opencv4
-Patch2:		https://patch-diff.githubusercontent.com/raw/dyne/frei0r/pull/101.patch
+Source0:	https://github.com/dyne/frei0r/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:	cmake
 BuildRequires:	doxygen
 Buildrequires:	pkgconfig(cairo)
@@ -63,11 +60,12 @@ applications that use frei0r-plugins.
 #----------------------------------------------------------------------------
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n frei0r-%{version}
+%cmake \
+	-G Ninja
 
 %build
-%cmake
-%make_build
+%ninja_build -C build
 
 %install
-%make_install -C build
+%ninja_install -C build
