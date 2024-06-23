@@ -2,11 +2,11 @@
 
 Summary:	A minimalistic plugin API for video effects
 Name:		%{oname}-plugins
-Version:	2.3.2
-Release:	3
+Version:	2.3.3
+Release:	1
 License:	GPLv2+
 Group:		System/Libraries
-Url:		http://frei0r.dyne.org/
+Url:		https://frei0r.dyne.org/
 # See also https://github.com/dyne/frei0r
 Source0:	https://github.com/dyne/frei0r/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:	cmake
