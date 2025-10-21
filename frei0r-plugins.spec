@@ -54,7 +54,7 @@ applications that use frei0r-plugins.
 
 %files devel
 #doc #{_docdir}/%{name}
-%{_includedir}/frei0r.h
+%{_includedir}/frei0r*
 %{_libdir}/pkgconfig/frei0r.pc
 
 #----------------------------------------------------------------------------
