@@ -8,7 +8,7 @@ License:	GPLv2+
 Group:		System/Libraries
 Url:		https://frei0r.dyne.org/
 # See also https://github.com/dyne/frei0r
-Source0:	https://github.com/dyne/frei0r/archive/refs/tags/v%{version}.tar.gz
+Source0:	https://github.com/dyne/frei0r/archive/refs/tags/v%{version}/%{oname}-%{version}.tar.gz
 BuildRequires:	cmake
 BuildRequires:	doxygen
 BuildRequires:	pkgconfig(cairo)
