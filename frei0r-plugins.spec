@@ -2,7 +2,7 @@
 
 Summary:	A minimalistic plugin API for video effects
 Name:		%{oname}-plugins
-Version:	3.0.0
+Version:	3.0.1
 Release:	1
 License:	GPLv2+
 Group:		System/Libraries
