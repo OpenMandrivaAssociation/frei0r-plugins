@@ -3,7 +3,7 @@
 Summary:	A minimalistic plugin API for video effects
 Name:		%{oname}-plugins
 Version:	3.2.3
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		System/Libraries
 Url:		https://frei0r.dyne.org/
@@ -14,7 +14,7 @@ BuildRequires:	doxygen
 BuildRequires:	pkgconfig(cairo)
 BuildRequires:	pkgconfig(gavl)
 BuildRequires:	pkgconfig(libpng)
-BuildRequires:	pkgconfig(opencv4)
+BuildRequires:	pkgconfig(opencv5)
 %rename		%{oname}
 
 %description
