@@ -3,19 +3,21 @@
 Summary:	A minimalistic plugin API for video effects
 Name:		%{oname}-plugins
 Version:	3.2.3
-Release:	5
+Release:	6
 License:	GPLv2+
 Group:		System/Libraries
 Url:		https://frei0r.dyne.org/
 # See also https://github.com/dyne/frei0r
 Source0:	https://github.com/dyne/frei0r/archive/refs/tags/v%{version}/%{oname}-%{version}.tar.gz
+# Haar cascade used by facedetect/facebl0r (OpenCV 5 no longer ships these)
+Source1:	haarcascade_frontalface_alt.xml
+Patch0:		frei0r-opencv5.patch
 BuildRequires:	cmake ninja
 BuildRequires:	doxygen
 BuildRequires:	pkgconfig(cairo)
 BuildRequires:	pkgconfig(gavl)
 BuildRequires:	pkgconfig(libpng)
-# OpenCV 5 breaks facedetect in 3.2.3; re-enable when fixed
-#BuildRequires:	pkgconfig(opencv5)
+BuildRequires:	pkgconfig(opencv5)
 %rename		%{oname}
 
 %description
@@ -41,6 +43,8 @@ ambitious efforts.
 %files
 %dir %{_libdir}/frei0r-1
 %{_libdir}/frei0r-1/*.so
+%dir %{_datadir}/frei0r-1
+%{_datadir}/frei0r-1/haarcascade_frontalface_alt.xml
 
 #----------------------------------------------------------------------------
 
@@ -63,11 +67,11 @@ applications that use frei0r-plugins.
 %prep
 %autosetup -p1 -n frei0r-%{version}
 %cmake \
-	-G Ninja \
-	-DWITHOUT_OPENCV=ON
+	-G Ninja
 
 %build
 %ninja_build -C build
 
 %install
 %ninja_install -C build
+install -D -m 644 %{SOURCE1} %{buildroot}%{_datadir}/frei0r-1/haarcascade_frontalface_alt.xml

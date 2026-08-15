@@ -1,0 +1,46 @@
+--- a/src/filter/facedetect/facedetect.cpp
++++ b/src/filter/facedetect/facedetect.cpp
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <opencv2/opencv.hpp>
++#include <opencv2/xobjdetect.hpp>
+ #include "frei0r.hpp"
+ #include "frei0r/math.h"
+ 
+@@ -65,10 +66,10 @@
+     {
+         roi.width = roi.height = 0;
+         roi.x = roi.y = 0;
+-        classifier = "/usr/share/opencv/haarcascades/haarcascade_frontalface_default.xml";
++        classifier = "/usr/share/frei0r-1/haarcascade_frontalface_alt.xml";
+         register_param(classifier,
+                        "Classifier",
+-                       "Full path to the XML pattern model for recognition; look in /usr/share/opencv/haarcascades"); 
++                       "Full path to the XML pattern model for recognition; look in /usr/share/frei0r-1");
+         threads = 0.01; //number of CPUs
+         register_param(threads, "Threads", "How many threads to use divided by 100; 0 uses CPU count");
+         shape = 0.0;
+--- a/src/filter/facebl0r/facebl0r.cpp
++++ b/src/filter/facebl0r/facebl0r.cpp
+@@ -19,6 +19,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <opencv2/opencv.hpp>
++#include <opencv2/xobjdetect.hpp>
+ #include "frei0r.hpp"
+ #include "frei0r/math.h"
+ 
+@@ -92,10 +93,10 @@
+ 
+   face_found = 0;
+ 
+-  classifier = "/usr/share/opencv/haarcascades/haarcascade_frontalface_default.xml";
++  classifier = "/usr/share/frei0r-1/haarcascade_frontalface_alt.xml";
+   register_param(classifier,
+                  "Classifier",
+-                 "Full path to the XML pattern model for recognition; look in /usr/share/opencv/haarcascades");
++                 "Full path to the XML pattern model for recognition; look in /usr/share/frei0r-1");
+   ellipse = false;
+   register_param(ellipse, "Ellipse", "Draw a red ellipse around the object");
+   recheck = 0.025;

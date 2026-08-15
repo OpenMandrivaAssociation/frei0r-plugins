@@ -1,2 +1,3 @@
 sources:
   frei0r-3.2.3.tar.gz: 2cde888a0133ec892d9717057401bbce2cf2a69a
+  haarcascade_frontalface_alt.xml: 1246a90d1f7d2d522aea89e93ed0fa8a38d993a3
